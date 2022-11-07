@@ -20,11 +20,11 @@ public class ScoreTimer : MonoBehaviour
     {
         if (!player.alive)
         {
-            Debug.Log("Player not alive");
+            //Debug.Log("Player not alive");
         }
         else
         {
-            Debug.Log("Player alive");
+            //Debug.Log("Player alive");
             score += Time.deltaTime; // Adds 1 to score every second;
             scoreText.text = ("Score: " + Mathf.RoundToInt(score).ToString()); // Rounds the score to an INT and displays it
         }

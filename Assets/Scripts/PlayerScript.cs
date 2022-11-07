@@ -31,6 +31,12 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject camera;
 
+    public CameraEffects cam;
+
+    bool drawOutline = false;
+
+    float timer = 2.5f;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -56,7 +62,24 @@ public class PlayerScript : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.T))
         {
             TakeDamage(1);
-            Debug.Log("Pressing T");
+        }
+
+        if(drawOutline)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                cam.turnOffRenderer();
+                drawOutline = false;
+                timer = 2.5f;
+            }
+            else
+            {
+                cam.drawOutlines();
+               
+            }
+
+            Debug.Log(timer);
         }
     }
 
@@ -80,7 +103,6 @@ public class PlayerScript : MonoBehaviour
             {
                 TakeDamage(1);
                 loseHealth();
-                Debug.Log("Hit");
             }
         }
     }
@@ -121,13 +143,15 @@ public class PlayerScript : MonoBehaviour
         {
             alive = false;
         }
+
+        drawOutline = true;
     }
 
-    public void isHealthLow()
-    {
-        if(currentHealth < currentHealth / 2)
-        {
-            //do smtg
-        }
-    }
+    //public void isHealthLow()
+    //{
+    //    if (currentHealth < 3)
+    //    {
+    //        drawOutline = true;
+    //    }
+    //}
 }

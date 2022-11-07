@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Obstacles
   - Player
-  - 
+  - CameraEffects
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: floor
     uniqueID: 66114533
+    locked: 0
+  - name: CameraEffects
+    uniqueID: 3021455797
     locked: 0

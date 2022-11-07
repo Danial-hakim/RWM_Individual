@@ -16,15 +16,26 @@ public class CameraEffects : MonoBehaviour
 
         cameraHeight = 2f * cam.orthographicSize;
         cameraWidth = cameraHeight * cam.aspect;
-
-        outlines.setupOutlinesSize(cameraWidth, cameraHeight);
-        outlines.setupOutlinesPosition(cameraWidth, cameraHeight);
-        outlines.setupOutlinesColor(1);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void drawOutlines()
+    {
+        float ypos = cameraHeight / 2;
+        float xpos = cameraWidth / 2;
+
+        outlines.setOutlinesParentSize(cameraWidth, cameraHeight);
+        outlines.setOutlineParentPos(xpos, ypos);
+        outlines.setOutlineParentColor(1);
+    }
+
+    public void turnOffRenderer()
+    {
+        outlines.turnOffRenderer();
     }
 }
