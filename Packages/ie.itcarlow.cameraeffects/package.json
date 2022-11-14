@@ -1,6 +1,6 @@
 {
     "name": "ie.itcarlow.cameraeffects",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "displayName": "CameraEffects",
     "description": "Outlines around the camera appear everytime player take damage",
     "unity": "2021.3"

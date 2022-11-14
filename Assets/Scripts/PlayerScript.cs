@@ -29,13 +29,13 @@ public class PlayerScript : MonoBehaviour
 
     public bool alive = true;
 
-    public GameObject camera;
+    public Camera camera;
 
     bool drawOutline = false;
 
     float timer = 2.5f;
 
-    public OutlinesScript outline; 
+    public GameObject outline; 
 
     void Start()
     {
@@ -137,10 +137,10 @@ public class PlayerScript : MonoBehaviour
 
     public void callOutlines()
     {
-        OutlinesScript outlinesClone;
+        GameObject outlinesClone;
 
         outlinesClone = Instantiate(outline, gameObject.transform.position, gameObject.transform.rotation);
 
-        outlinesClone.initiate();
+        outlinesClone.GetComponent<OutlinesScript>().setCamera(camera);
     }
 }

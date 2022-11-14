@@ -576,7 +576,7 @@ MonoBehaviour:
   bottom: {fileID: 5839087593253420329}
   topParent: {fileID: 5023662344406056699}
   bottomParent: {fileID: 236234154088925954}
-  cam: {fileID: 5363554173763908974, guid: a6b95be087a79a44a9de1469bba8736d, type: 3}
+  cam: {fileID: 0}
   timer: 2.5
 --- !u!1 &8072961866070715496
 GameObject:

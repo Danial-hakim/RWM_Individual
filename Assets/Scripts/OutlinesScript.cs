@@ -17,14 +17,12 @@ public class OutlinesScript : MonoBehaviour
 
     public float timer = 2.5f;
     // Start is called before the first frame update
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
 
     void Start()
     {
-       
+        setOutlinesParentSize();
+        setOutlineParentColor();
+        setOutlineParentPos();
     }
 
     // Update is called once per frame
@@ -71,17 +69,8 @@ public class OutlinesScript : MonoBehaviour
         bottomParent.setupOutlinesPosition(-1);
     }
 
-    public void checkState()
+    public void setCamera(Camera camera)
     {
-
-    }
-
-    public void initiate()
-    {
-        gameObject.SetActive(true);
-        setOutlinesParentSize();
-        setOutlineParentColor();
-        setOutlineParentPos();
-        //checkState();
+        cam = camera;
     }
 }
