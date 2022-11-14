@@ -46,9 +46,9 @@ public class TopAndBottomSetter : MonoBehaviour
     {
         Vector3 parentPos = firstLayer.transform.parent.localPosition;
 
-        firstLayer.gameObject.transform.localPosition = new Vector3(parentPos.x,parentPos.y ,parentPos.z);
-        secondLayer.gameObject.transform.localPosition = new Vector3(parentPos.x, parentPos.y - (0.2f * minus), parentPos.z);
-        thirdLayer.gameObject.transform.localPosition = new Vector3(parentPos.x, parentPos.y - (0.3f * minus), parentPos.z);
+        firstLayer.gameObject.transform.localPosition = new Vector3(parentPos.x,parentPos.y , 0);
+        secondLayer.gameObject.transform.localPosition = new Vector3(parentPos.x, parentPos.y - (0.2f * minus), 0);
+        thirdLayer.gameObject.transform.localPosition = new Vector3(parentPos.x, parentPos.y - (0.3f * minus), 0);
     }
 
     public void setToTransparent()

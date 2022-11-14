@@ -7,7 +7,8 @@ public class CameraEffects : MonoBehaviour
     float cameraHeight;
     float cameraWidth;
 
-    public OutlinesScript outlines;
+    float ypos;
+    float xpos;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class CameraEffects : MonoBehaviour
 
         cameraHeight = 2f * cam.orthographicSize;
         cameraWidth = cameraHeight * cam.aspect;
+
+        ypos = cameraHeight / 2;
+        xpos = cameraWidth / 2;
     }
 
     // Update is called once per frame
@@ -24,18 +28,13 @@ public class CameraEffects : MonoBehaviour
         
     }
 
-    public void drawOutlines()
+    public Vector2 getSize()
     {
-        float ypos = cameraHeight / 2;
-        float xpos = cameraWidth / 2;
-
-        outlines.setOutlinesParentSize(cameraWidth, cameraHeight);
-        outlines.setOutlineParentPos(xpos, ypos);
-        outlines.setOutlineParentColor(1);
+        return new Vector2(cameraWidth, cameraHeight);
     }
 
-    public void turnOffRenderer()
+    public Vector2 getPos()
     {
-        outlines.turnOffRenderer();
+        return new Vector2(xpos, ypos);
     }
 }

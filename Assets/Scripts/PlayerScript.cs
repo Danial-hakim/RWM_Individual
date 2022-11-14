@@ -31,11 +31,11 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject camera;
 
-    public CameraEffects cam;
-
     bool drawOutline = false;
 
     float timer = 2.5f;
+
+    public OutlinesScript outline; 
 
     void Start()
     {
@@ -48,38 +48,25 @@ public class PlayerScript : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            camera.GetComponent<DynamicCameraController>().trauma = 0.7f;
-        }
+        //      if (Input.GetButtonDown("Jump") && IsGrounded())
+        //      {
+        //          rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        //          camera.GetComponent<DynamicCameraController>().trauma = 0.7f;
+        //      }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-		
-		if (Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(1);
-        }
+        //      if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        //      {
+        //          rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        //      }
 
-        if(drawOutline)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                cam.turnOffRenderer();
-                drawOutline = false;
-                timer = 2.5f;
-            }
-            else
-            {
-                cam.drawOutlines();
-               
-            }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //      {
+        //          TakeDamage(1);
+        //      }
 
-            Debug.Log(timer);
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            callOutlines();
         }
     }
 
@@ -103,6 +90,7 @@ public class PlayerScript : MonoBehaviour
             {
                 TakeDamage(1);
                 loseHealth();
+                callOutlines();
             }
         }
     }
@@ -147,11 +135,12 @@ public class PlayerScript : MonoBehaviour
         drawOutline = true;
     }
 
-    //public void isHealthLow()
-    //{
-    //    if (currentHealth < 3)
-    //    {
-    //        drawOutline = true;
-    //    }
-    //}
+    public void callOutlines()
+    {
+        OutlinesScript outlinesClone;
+
+        outlinesClone = Instantiate(outline, gameObject.transform.position, gameObject.transform.rotation);
+
+        outlinesClone.initiate();
+    }
 }
