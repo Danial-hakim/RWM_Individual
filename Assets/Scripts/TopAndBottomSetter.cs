@@ -8,10 +8,6 @@ public class TopAndBottomSetter : MonoBehaviour
     public GameObject secondLayer;
     public GameObject thirdLayer;
 
-    public Renderer firstRen;
-    public Renderer secondRen;
-    public Renderer thirdRen;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +33,9 @@ public class TopAndBottomSetter : MonoBehaviour
         Color secondRed = new Color(1.0f, 0.0f, 0.0f, 0.33f);
         Color thirdRed = new Color(1, 0, 0, 0.11f);
 
-        firstRen.material.color = firstRed;
-        secondRen.material.color = secondRed;
-        thirdRen.material.color = thirdRed;
+        firstLayer.GetComponent<Renderer>().material.color = firstRed;
+        secondLayer.GetComponent<Renderer>().material.color = secondRed;
+        thirdLayer.GetComponent<Renderer>().material.color = thirdRed;
     }
 
     public void setupOutlinesPosition(int minus) 
@@ -55,8 +51,8 @@ public class TopAndBottomSetter : MonoBehaviour
     {
         Color transparent = new Color(0, 0, 0, 0);
 
-        firstRen.material.color = transparent;
-        secondRen.material.color = transparent;
-        thirdRen.material.color = transparent;
+        firstLayer.GetComponent<Renderer>().material.color = transparent;
+        secondLayer.GetComponent<Renderer>().material.color = transparent;
+        thirdLayer.GetComponent<Renderer>().material.color = transparent;
     }
 }

@@ -7,8 +7,8 @@ public class OutlinesScript : MonoBehaviour
     public GameObject top;
     public GameObject bottom;
 
-    public TopAndBottomSetter topParent;
-    public TopAndBottomSetter bottomParent;
+    TopAndBottomSetter topParent;
+    TopAndBottomSetter bottomParent;
 
     public Camera cam;
 
@@ -20,6 +20,8 @@ public class OutlinesScript : MonoBehaviour
 
     void Start()
     {
+        topParent = top.GetComponent<TopAndBottomSetter>();
+        bottomParent = bottom.GetComponent<TopAndBottomSetter>();
         setOutlinesParentSize();
         setOutlineParentColor();
         setOutlineParentPos();
