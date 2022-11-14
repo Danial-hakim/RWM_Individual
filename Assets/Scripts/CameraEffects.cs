@@ -4,37 +4,31 @@ using UnityEngine;
 
 public class CameraEffects : MonoBehaviour
 {
-    float cameraHeight;
-    float cameraWidth;
+    float rotation = 0;
 
-    float ypos;
-    float xpos;
+    public float camSpeed = 0.01f;
 
+    private Vector3 rotateValue;
     // Start is called before the first frame update
     void Start()
     {
-        Camera cam = Camera.main;
 
-        cameraHeight = 2f * cam.orthographicSize;
-        cameraWidth = cameraHeight * cam.aspect;
-
-        ypos = cameraHeight / 2;
-        xpos = cameraWidth / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        rotateValue = new Vector3(0, 0, 1);
     }
 
-    public Vector2 getSize()
+    private void FixedUpdate()
     {
-        return new Vector2(cameraWidth, cameraHeight);
+        fixedRotation();
     }
 
-    public Vector2 getPos()
+    void fixedRotation()
     {
-        return new Vector2(xpos, ypos);
+        transform.eulerAngles = transform.eulerAngles - rotateValue;
+        transform.eulerAngles += rotateValue * camSpeed;
     }
 }

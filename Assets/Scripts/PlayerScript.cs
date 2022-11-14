@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     private float invincibleDuration = 2.5f;
     private float invincibleDeltaTime = 0.3f;
 
-    public Renderer renderer;
+    Renderer renderer;
 	
 	public int maxHealth = 3;
     public int currentHealth;
@@ -31,10 +31,6 @@ public class PlayerScript : MonoBehaviour
 
     public Camera camera;
 
-    bool drawOutline = false;
-
-    float timer = 2.5f;
-
     public GameObject outline; 
 
     void Start()
@@ -42,6 +38,8 @@ public class PlayerScript : MonoBehaviour
         currentHealth = maxHealth;
         healthbar.setMaxHealth(maxHealth);
         fuelGuage.setMaxFuel(Maxfuel);
+
+        renderer = gameObject.GetComponent<Renderer>();
     }
 	
     void Update()
@@ -131,8 +129,6 @@ public class PlayerScript : MonoBehaviour
         {
             alive = false;
         }
-
-        drawOutline = true;
     }
 
     public void callOutlines()
