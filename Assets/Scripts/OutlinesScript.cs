@@ -25,6 +25,8 @@ public class OutlinesScript : MonoBehaviour
         setOutlinesParentSize();
         setOutlineParentColor();
         setOutlineParentPos();
+
+        transform.parent = null;
     }
 
     // Update is called once per frame
