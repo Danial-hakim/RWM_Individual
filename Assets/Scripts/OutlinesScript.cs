@@ -7,10 +7,12 @@ public class OutlinesScript : MonoBehaviour
     public GameObject top;
     public GameObject bottom;
 
+#pragma warning disable CS0436 // Type conflicts with imported type
     TopAndBottomSetter topParent;
     TopAndBottomSetter bottomParent;
+#pragma warning restore CS0436 // Type conflicts with imported type
 
-    public Camera cam;
+    [SerializeField]private Camera cam;
 
     float height;
     float width;
@@ -20,11 +22,18 @@ public class OutlinesScript : MonoBehaviour
 
     void Start()
     {
+#pragma warning disable CS0436 // Type conflicts with imported type
         topParent = top.GetComponent<TopAndBottomSetter>();
         bottomParent = bottom.GetComponent<TopAndBottomSetter>();
+#pragma warning restore CS0436 // Type conflicts with imported type
         setOutlinesParentSize();
         setOutlineParentColor();
         setOutlineParentPos();
+
+        if(cam == null)
+        {
+            cam = Camera.main;
+        }
 
         transform.parent = null;
     }
