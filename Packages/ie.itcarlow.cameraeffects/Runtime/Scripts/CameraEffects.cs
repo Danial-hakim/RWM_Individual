@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class CameraEffects : MonoBehaviour
 {
-    [SerializeField] bool SnowEffect;
+    [Header("Snow Setter")]
+    [SerializeField] bool snowEffect;
     GameObject snowGameobject;
     ParticleSystem snowParticles;
+
+    [Header("Rain Setter")]
+    [SerializeField] bool RainEffect;
+    GameObject rainGameobject;
+    ParticleSystem rainParticles;
+
     ParticleSystemShapeType edgeShape = ParticleSystemShapeType.SingleSidedEdge;
 
     float topOfScreen;
@@ -19,12 +26,13 @@ public class CameraEffects : MonoBehaviour
         camSize = Camera.main.orthographicSize;
 
         SetupSnow();
+        SetupRain();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(SnowEffect)
+        if(snowEffect)
         {
             if(!snowParticles.isPlaying)
             {
@@ -38,6 +46,21 @@ public class CameraEffects : MonoBehaviour
                 snowParticles.Stop();
             }
         }
+
+        if (RainEffect)
+        {
+            if (!rainParticles.isPlaying)
+            {
+                rainParticles.Play();
+            }
+        }
+        else
+        {
+            if (rainParticles.isPlaying)
+            {
+                rainParticles.Stop();
+            }
+        }
     }
 
     void SetupSnow()
@@ -48,6 +71,18 @@ public class CameraEffects : MonoBehaviour
         snowGameobject.transform.position = new Vector3(0, topOfScreen, 0);
 
         var shape = snowParticles.shape;
+        shape.shapeType = edgeShape;
+        shape.radius = camSize * 2;
+    }
+
+    void SetupRain()
+    {
+        rainGameobject = transform.GetChild(1).gameObject;
+        rainParticles = rainGameobject.GetComponent<ParticleSystem>();
+
+        rainGameobject.transform.position = new Vector3(0, topOfScreen, 0);
+
+        var shape = rainParticles.shape;
         shape.shapeType = edgeShape;
         shape.radius = camSize * 2;
     }
