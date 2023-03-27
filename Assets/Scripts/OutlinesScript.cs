@@ -4,38 +4,42 @@ using UnityEngine;
 
 public class OutlinesScript : MonoBehaviour
 {
-    public GameObject top;
-    public GameObject bottom;
+    [SerializeField] private GameObject top;
+    [SerializeField] private GameObject bottom;
 
-#pragma warning disable CS0436 // Type conflicts with imported type
     TopAndBottomSetter topParent;
     TopAndBottomSetter bottomParent;
-#pragma warning restore CS0436 // Type conflicts with imported type
 
-    [SerializeField]private Camera cam;
+    [SerializeField] private Camera cam;
 
     float height;
     float width;
 
     public float timer = 2.5f;
+
+    float camSize;
+
+    [SerializeField] private Color outlinesColor;
     // Start is called before the first frame update
 
     void Start()
     {
-#pragma warning disable CS0436 // Type conflicts with imported type
-        topParent = top.GetComponent<TopAndBottomSetter>();
-        bottomParent = bottom.GetComponent<TopAndBottomSetter>();
-#pragma warning restore CS0436 // Type conflicts with imported type
-        setOutlinesParentSize();
-        setOutlineParentColor();
-        setOutlineParentPos();
-
+        // Set the camera to main unless theres a specific camera you want the outline to appear on
         if(cam == null)
         {
             cam = Camera.main;
-        }
+        } 
 
-        transform.parent = null;
+
+        if(transform.parent != null)
+        {
+            transform.parent = null;
+        }
+        topParent = top.GetComponent<TopAndBottomSetter>();
+        bottomParent = bottom.GetComponent<TopAndBottomSetter>();
+        setOutlinesParentSize();
+        setOutlineParentColor();
+        setOutlineParentPos();
     }
 
     // Update is called once per frame
@@ -49,39 +53,46 @@ public class OutlinesScript : MonoBehaviour
             {
                 topParent.setToTransparent();
                 bottomParent.setToTransparent();
+                Destroy(gameObject);
             }
         }
     }
 
     public void setOutlinesParentSize()
     {
-        height = cam.orthographicSize * 2f;
+        camSize = cam.orthographicSize;
+
+        height = camSize * 2f;
         width = height * cam.aspect;
 
         gameObject.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + 2);
 
-        topParent.setupOutlinesSize(width);
-        bottomParent.setupOutlinesSize(width);
+        topParent.setupOutlinesSize(width,camSize);
+        bottomParent.setupOutlinesSize(width,camSize);
     }
 
     public void setOutlineParentColor()
     {
-        topParent.setupOutlinesColor();
-        bottomParent.setupOutlinesColor();
+        topParent.setupOutlinesColor(outlinesColor);
+        bottomParent.setupOutlinesColor(outlinesColor);
     }
 
     public void setOutlineParentPos()
     {
         float xPos = 0;
-        float yPos = height / 4;
+        float yPos = camSize / 2f;
 
-        top.gameObject.transform.localPosition = new Vector3(xPos, yPos, 10);
-        bottom.gameObject.transform.localPosition = new Vector3(xPos, -yPos, 10);
+        top.gameObject.transform.position = new Vector3(xPos, yPos, 10);
+        bottom.gameObject.transform.position = new Vector3(xPos, -yPos, 10);
 
         topParent.setupOutlinesPosition(1);
         bottomParent.setupOutlinesPosition(-1);
     }
 
+    /// <summary>
+    /// If you want to change to a specific camera at run time 
+    /// </summary>
+    /// <param name="camera"></param>
     public void setCamera(Camera camera)
     {
         cam = camera;

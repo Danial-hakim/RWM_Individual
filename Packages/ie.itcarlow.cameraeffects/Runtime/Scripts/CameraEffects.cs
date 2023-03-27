@@ -4,92 +4,51 @@ using UnityEngine;
 
 public class CameraEffects : MonoBehaviour
 {
-    public float camSpeed = -5.0f;
+    [SerializeField] bool SnowEffect;
+    GameObject snowGameobject;
+    ParticleSystem snowParticles;
+    ParticleSystemShapeType edgeShape = ParticleSystemShapeType.SingleSidedEdge;
 
-    private Vector3 rotateValue;
-
-    public float swingDuration = 2;
-
-    public bool enableSwing = false;
-
-    public bool enableFixedRotation = false;
-
-    public bool reset = false;
-
-    int stage = 0;
+    float topOfScreen;
+    float camSize;
 
     // Start is called before the first frame update
     void Start()
     {
+        topOfScreen = Camera.main.orthographicSize;
+        camSize = Camera.main.orthographicSize;
 
+        SetupSnow();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rotateValue = new Vector3(0, 0, 1);
-
-        if(enableSwing)
+        if(SnowEffect)
         {
-            if(swingDuration > 0)
+            if(!snowParticles.isPlaying)
             {
-                swingDuration -= Time.deltaTime;
+                snowParticles.Play();
             }
-            Debug.Log(swingDuration);
+        }
+        else
+        {
+            if(snowParticles.isPlaying)
+            {
+                snowParticles.Stop();
+            }
         }
     }
 
-    private void FixedUpdate()
+    void SetupSnow()
     {
-        if (enableSwing)
-        {
-            swinging();          
-        }
+        snowGameobject = transform.GetChild(0).gameObject;
+        snowParticles = snowGameobject.GetComponent<ParticleSystem>();
 
-        if(enableFixedRotation)
-        {
-            fixedRotation();
-        }
+        snowGameobject.transform.position = new Vector3(0, topOfScreen, 0);
 
-        if(reset)
-        {
-            resetRotation();
-        }
-    }
-
-    void fixedRotation()
-    {
-        transform.eulerAngles = transform.eulerAngles - rotateValue;
-        transform.eulerAngles += rotateValue * camSpeed;
-    }
-
-    void swinging()
-    {
-        if (swingDuration > 2)
-        {
-            transform.eulerAngles = transform.eulerAngles - rotateValue;
-            transform.eulerAngles += rotateValue * camSpeed;
-            
-        }
-        else 
-        {
-            transform.eulerAngles = transform.eulerAngles + rotateValue;
-            transform.eulerAngles -= rotateValue * camSpeed;
-        }
-
-        if (swingDuration < 0)
-        {
-            swingDuration = 4;
-        }
-    }
-
-    private void resetRotation()
-    {
-        enableFixedRotation = false;
-        enableSwing = false;
-
-        transform.eulerAngles = new Vector3(0, 0, 0);
-
-        reset = false;
+        var shape = snowParticles.shape;
+        shape.shapeType = edgeShape;
+        shape.radius = camSize * 2;
     }
 }
