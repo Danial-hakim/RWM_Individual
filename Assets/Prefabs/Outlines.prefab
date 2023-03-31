@@ -570,7 +570,7 @@ MonoBehaviour:
   bottom: {fileID: 5839087593253420329}
   cam: {fileID: 0}
   timer: 2.5
-  outlinesColor: {r: 0.052918315, g: 1, b: 0, a: 0}
+  outlinesColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &8072961866070715496
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,14 @@ public class CameraEffects : MonoBehaviour
     ParticleSystem snowParticles;
 
     [Header("Rain Setter")]
-    [SerializeField] bool RainEffect;
+    [SerializeField] bool rainEffect;
     GameObject rainGameobject;
     ParticleSystem rainParticles;
+
+    [Header("Confetti Setter")]
+    [SerializeField] bool confettiEffect;
+    GameObject confettiGameobject;
+    ParticleSystem confettiParticles;
 
     ParticleSystemShapeType edgeShape = ParticleSystemShapeType.SingleSidedEdge;
 
@@ -25,65 +30,77 @@ public class CameraEffects : MonoBehaviour
         topOfScreen = Camera.main.orthographicSize;
         camSize = Camera.main.orthographicSize;
 
-        SetupSnow();
-        SetupRain();
+        snowGameobject = SetupParticle("Snow Particle");
+        rainGameobject = SetupParticle("Rain Particle");
+        confettiGameobject = SetupParticle("Confetti Particle");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(snowEffect)
-        {
-            if(!snowParticles.isPlaying)
-            {
-                snowParticles.Play();
-            }
-        }
-        else
-        {
-            if(snowParticles.isPlaying)
-            {
-                snowParticles.Stop();
-            }
-        }
+        ToggleParticleEffect(snowParticles, snowEffect);
+        ToggleParticleEffect(rainParticles, rainEffect);
+        ToggleParticleEffect(confettiParticles, confettiEffect);
+    }
 
-        if (RainEffect)
+    void ToggleParticleEffect(ParticleSystem particleSystem, bool enable)
+    {
+        if (enable && !particleSystem.isPlaying)
         {
-            if (!rainParticles.isPlaying)
-            {
-                rainParticles.Play();
-            }
+            particleSystem.Play();
         }
-        else
+        else if (!enable && particleSystem.isPlaying)
         {
-            if (rainParticles.isPlaying)
-            {
-                rainParticles.Stop();
-            }
+            particleSystem.Stop();
         }
     }
 
-    void SetupSnow()
+    GameObject SetupParticle(string particleName)
     {
-        snowGameobject = transform.GetChild(0).gameObject;
-        snowParticles = snowGameobject.GetComponent<ParticleSystem>();
+        GameObject particleGameObject = transform.Find(particleName).gameObject;
+        ParticleSystem particleSystem = particleGameObject.GetComponent<ParticleSystem>();
 
-        snowGameobject.transform.position = new Vector3(0, topOfScreen, 0);
+        particleGameObject.transform.position = new Vector3(0, topOfScreen, 0);
 
-        var shape = snowParticles.shape;
+        var shape = particleSystem.shape;
         shape.shapeType = edgeShape;
         shape.radius = camSize * 2;
+
+        return particleGameObject;
     }
+    //void SetupSnow()
+    //{
+    //    snowGameobject = transform.Find("Snow Particle").gameObject;
+    //    snowParticles = snowGameobject.GetComponent<ParticleSystem>();
 
-    void SetupRain()
-    {
-        rainGameobject = transform.GetChild(1).gameObject;
-        rainParticles = rainGameobject.GetComponent<ParticleSystem>();
+    //    snowGameobject.transform.position = new Vector3(0, topOfScreen, 0);
 
-        rainGameobject.transform.position = new Vector3(0, topOfScreen, 0);
+    //    var shape = snowParticles.shape;
+    //    shape.shapeType = edgeShape;
+    //    shape.radius = camSize * 2;
+    //}
 
-        var shape = rainParticles.shape;
-        shape.shapeType = edgeShape;
-        shape.radius = camSize * 2;
-    }
+    //void SetupRain()
+    //{
+    //    rainGameobject = transform.Find("Rain Particle").gameObject;
+    //    rainParticles = rainGameobject.GetComponent<ParticleSystem>();
+
+    //    rainGameobject.transform.position = new Vector3(0, topOfScreen, 0);
+
+    //    var shape = rainParticles.shape;
+    //    shape.shapeType = edgeShape;
+    //    shape.radius = camSize * 2;
+    //}
+
+    //void SetupConfetti()
+    //{
+    //    confettiGameobject = transform.Find("Confetti Particle").gameObject;
+    //    confettiParticles = confettiGameobject.GetComponent<ParticleSystem>();
+
+    //    confettiGameobject.transform.position = new Vector3(0, topOfScreen, 0);
+
+    //    var shape = confettiParticles.shape;
+    //    shape.shapeType = edgeShape;
+    //    shape.radius = camSize * 2;
+    //}
 }

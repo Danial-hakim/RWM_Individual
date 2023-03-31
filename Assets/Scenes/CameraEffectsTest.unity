@@ -212,6 +212,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a115cb1cdec21fa488720bb7c6dd328f, type: 3}
+--- !u!1001 &544616539
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 981384712}
+    m_Modifications:
+    - target: {fileID: 6342404348877623306, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_Name
+      value: Confetti Particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623308, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+--- !u!4 &544616540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6342404348877623309, guid: 86367c64ac72cac48afb4fb45bc3acd3, type: 3}
+  m_PrefabInstance: {fileID: 544616539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &741886075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8758631028531896827, guid: 1259d14d06cf5244d81a6aa0aae1844d, type: 3}
       propertyPath: m_Name
-      value: Snow Particle System
+      value: Snow Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1259d14d06cf5244d81a6aa0aae1844d, type: 3}
@@ -387,6 +453,7 @@ Transform:
   m_Children:
   - {fileID: 741886076}
   - {fileID: 820661226}
+  - {fileID: 544616540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -403,7 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowEffect: 0
-  RainEffect: 0
+  rainEffect: 0
+  confettiEffect: 0
 --- !u!4 &1640323358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2222879573547606907, guid: 4979355ac3c47c947865d3924b30c369, type: 3}
