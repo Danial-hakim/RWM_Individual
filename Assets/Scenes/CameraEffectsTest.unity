@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 981384711}
   - component: {fileID: 981384710}
   - component: {fileID: 981384713}
+  - component: {fileID: 981384714}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -406,7 +407,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.18741083, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -472,6 +473,21 @@ MonoBehaviour:
   snowEffect: 0
   rainEffect: 0
   confettiEffect: 0
+  enableGrayscaleEffect: 0
+  grayscaleMaterial: {fileID: 2100000, guid: 4a4f55d54db607546b1fdede248dd457, type: 2}
+--- !u!114 &981384714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981384709}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450f5408a52e8f54f8b57efdaaa892ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 4a4f55d54db607546b1fdede248dd457, type: 2}
 --- !u!4 &1640323358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2222879573547606907, guid: 4979355ac3c47c947865d3924b30c369, type: 3}
@@ -489,7 +505,7 @@ GameObject:
   - component: {fileID: 1955565202}
   - component: {fileID: 1955565204}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Obstacle
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

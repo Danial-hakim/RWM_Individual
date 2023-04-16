@@ -24,6 +24,9 @@ public class CameraEffects : MonoBehaviour
     float topOfScreen;
     float camSize;
 
+    [SerializeField] bool enableGrayscaleEffect = false;
+    [SerializeField] Material grayscaleMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,26 +41,31 @@ public class CameraEffects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ToggleParticleEffect(snowParticles, snowEffect);
-        ToggleParticleEffect(rainParticles, rainEffect);
-        ToggleParticleEffect(confettiParticles, confettiEffect);
+        ToggleParticleEffect(snowGameobject, snowEffect);
+        ToggleParticleEffect(rainGameobject, rainEffect);
+        ToggleParticleEffect(confettiGameobject, confettiEffect);
     }
 
-    void ToggleParticleEffect(ParticleSystem particleSystem, bool enable)
+    void ToggleParticleEffect(GameObject currentGameobject, bool enable)
     {
-        if (enable && !particleSystem.isPlaying)
+        ParticleSystem particleSystem = currentGameobject.GetComponent<ParticleSystem>();
+        if(particleSystem != null)
         {
-            particleSystem.Play();
-        }
-        else if (!enable && particleSystem.isPlaying)
-        {
-            particleSystem.Stop();
+            if (enable && !particleSystem.isPlaying)
+            {
+                particleSystem.Play();
+            }
+            else if (!enable && particleSystem.isPlaying)
+            {
+                particleSystem.Stop();
+            }
         }
     }
 
     GameObject SetupParticle(string particleName)
     {
-        GameObject particleGameObject = transform.Find(particleName).gameObject;
+        Transform particleTransform = transform.Find(particleName);
+        GameObject particleGameObject = particleTransform.gameObject;
         ParticleSystem particleSystem = particleGameObject.GetComponent<ParticleSystem>();
 
         particleGameObject.transform.position = new Vector3(0, topOfScreen, 0);
@@ -67,6 +75,18 @@ public class CameraEffects : MonoBehaviour
         shape.radius = camSize * 2;
 
         return particleGameObject;
+    }
+
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if (enableGrayscaleEffect)
+        {
+            Graphics.Blit(source, destination, grayscaleMaterial);
+        }
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
     }
     //void SetupSnow()
     //{
