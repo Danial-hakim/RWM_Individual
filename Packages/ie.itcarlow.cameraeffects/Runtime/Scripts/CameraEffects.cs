@@ -7,17 +7,18 @@ public class CameraEffects : MonoBehaviour
     [Header("Snow Setter")]
     [SerializeField] bool snowEffect;
     GameObject snowGameobject;
-    ParticleSystem snowParticles;
 
     [Header("Rain Setter")]
     [SerializeField] bool rainEffect;
     GameObject rainGameobject;
-    ParticleSystem rainParticles;
 
     [Header("Confetti Setter")]
     [SerializeField] bool confettiEffect;
     GameObject confettiGameobject;
-    ParticleSystem confettiParticles;
+
+    [Header("Falling Leaf Setter")]
+    [SerializeField] bool fallingLeafEffect;
+    GameObject leafGameobject;
 
     ParticleSystemShapeType edgeShape = ParticleSystemShapeType.SingleSidedEdge;
 
@@ -36,6 +37,7 @@ public class CameraEffects : MonoBehaviour
         snowGameobject = SetupParticle("Snow Particle");
         rainGameobject = SetupParticle("Rain Particle");
         confettiGameobject = SetupParticle("Confetti Particle");
+        leafGameobject = SetupParticle("Leaf Particle");
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class CameraEffects : MonoBehaviour
         ToggleParticleEffect(snowGameobject, snowEffect);
         ToggleParticleEffect(rainGameobject, rainEffect);
         ToggleParticleEffect(confettiGameobject, confettiEffect);
+        ToggleParticleEffect(leafGameobject, fallingLeafEffect);
     }
 
     void ToggleParticleEffect(GameObject currentGameobject, bool enable)
