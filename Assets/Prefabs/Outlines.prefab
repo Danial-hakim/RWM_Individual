@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9140536153104441173}
-  - component: {fileID: 7793142156717599385}
+  - component: {fileID: 3455509360898198026}
   m_Layer: 10
   m_Name: Top
   m_TagString: Untagged
@@ -203,7 +203,7 @@ Transform:
   m_Father: {fileID: 7137679077016041919}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7793142156717599385
+--- !u!114 &3455509360898198026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3879473448151090682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d78de6359e11542b542163223cfbb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d038fd477ef54b4f9d9a742b7443546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstLayer: {fileID: 7137679076349941967}
@@ -311,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4625993639347342615}
-  - component: {fileID: 5725842859844906007}
+  - component: {fileID: 6312913689834827914}
   m_Layer: 10
   m_Name: Bottom
   m_TagString: Untagged
@@ -337,7 +337,7 @@ Transform:
   m_Father: {fileID: 7137679077016041919}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5725842859844906007
+--- !u!114 &6312913689834827914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5839087593253420329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d78de6359e11542b542163223cfbb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d038fd477ef54b4f9d9a742b7443546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstLayer: {fileID: 8072961866070715496}
@@ -529,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7137679077016041919}
-  - component: {fileID: 3465637166136155699}
+  - component: {fileID: 5631718753991832841}
   m_Layer: 10
   m_Name: Outlines
   m_TagString: Untagged
@@ -554,7 +554,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3465637166136155699
+--- !u!114 &5631718753991832841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,14 +563,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7137679077016041888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20f0b78f6fc48de47847cd09ff254b5a, type: 3}
+  m_Script: {fileID: 11500000, guid: e3dae68b2a9e5b2449d90140b6f403cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   top: {fileID: 3879473448151090682}
   bottom: {fileID: 5839087593253420329}
   cam: {fileID: 0}
   timer: 2.5
-  outlinesColor: {r: 1, g: 0, b: 0, a: 1}
+  outlinesColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8072961866070715496
 GameObject:
   m_ObjectHideFlags: 0

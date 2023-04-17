@@ -19,7 +19,7 @@ public class OutlinesScript : MonoBehaviour
 
     float camSize;
 
-    [SerializeField] private Color outlinesColor;
+    public Color outlinesColor { get; set; } = Color.black;
     // Start is called before the first frame update
 
     void Start()

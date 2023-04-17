@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [SerializeField] private GameObject outlines;
+
+    Camera FPS_Camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +46,10 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.collider.tag == "Obstacles")
         {
-            Instantiate(outlines, gameObject.transform);
+            GameObject tempOutline = Instantiate(outlines, gameObject.transform);
+
+            Color color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+            tempOutline.GetComponent<OutlinesScript>().outlinesColor = color;
         }
     }
 }
