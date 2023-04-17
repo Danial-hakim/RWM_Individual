@@ -132,11 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7444750349066432656, guid: a115cb1cdec21fa488720bb7c6dd328f, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.6792453
       objectReference: {fileID: 0}
     - target: {fileID: 7444750349066432656, guid: a115cb1cdec21fa488720bb7c6dd328f, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.008437967
       objectReference: {fileID: 0}
     - target: {fileID: 7444750349066432656, guid: a115cb1cdec21fa488720bb7c6dd328f, type: 3}
       propertyPath: m_Color.r
@@ -654,6 +654,18 @@ PrefabInstance:
     - target: {fileID: 2222879572538309808, guid: 4979355ac3c47c947865d3924b30c369, type: 3}
       propertyPath: m_Name
       value: TempPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222879572538309812, guid: 4979355ac3c47c947865d3924b30c369, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222879572538309812, guid: 4979355ac3c47c947865d3924b30c369, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9312867
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222879572538309812, guid: 4979355ac3c47c947865d3924b30c369, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2222879572538309815, guid: 4979355ac3c47c947865d3924b30c369, type: 3}
       propertyPath: m_RootOrder
