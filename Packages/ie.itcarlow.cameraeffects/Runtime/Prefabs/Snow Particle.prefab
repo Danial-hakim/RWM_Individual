@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8758631028531896805}
   - component: {fileID: 8758631028531896804}
   m_Layer: 0
-  m_Name: Snow Particle System
+  m_Name: Snow Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4761,7 +4761,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02734c3cac58fb74a897b175ad329e42, type: 2}
+  - {fileID: 2100000, guid: 486656b8180e2f843a1543127c67b256, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
